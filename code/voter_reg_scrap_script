@@ -1,18 +1,13 @@
-#
-#Process html versions
-#BEB 6/21/2018
-#
-#
-#
-print(date())
+# Process html versions
+# BEB 6/21/2018
 
-#clear memory 
-rm( list=ls() )  
+#clear memory
+rm(list = ls())
 
 #set seed
 set.seed(9)
 
-#load (un)necessary packages
+# load (un)necessary packages
 library(tm)
 library(foreign)
 library(topicmodels)
@@ -27,89 +22,132 @@ library(magrittr)
 setwd("~/Documents/Scripts and Data")
 
 #create objects to loop over
-loop.list<-c("01","02","03","04","05","06","07","08","09","10","11")
+loop.list <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11")
 
-for(i in 1:11){
-
-#define target uRL
-urlname<-paste("https://elections.delaware.gov/reports/e70r2601_2017",loop.list[i],"01.shtml",sep="")
-
-#read-in table
-DE_2018_VoterRegMessy <- read_html(urlname) %>%
-  html_nodes(xpath = '/html/body/center[2]/pre') %>% #html_nodes acts as a selector
-  html_text() %>%
-  strsplit(split = "\n") %>%
-  unlist() %>%
-  .[. != ""]
-
-#fist do some hacky substitutions that will be needed later
-DE_2018_VoterRegMessy<-gsub(" OF  ","-OF-",DE_2018_VoterRegMessy)
-DE_2018_VoterRegMessy<-gsub("County Total", "County-Total",DE_2018_VoterRegMessy)
-
-#split up by county, first getting list numbers for each county
-kent.start<-grep("KENT COUNTY",DE_2018_VoterRegMessy)
-newcastle.start<-grep("NEW CASTLE COUNTY",DE_2018_VoterRegMessy)
-sussex.start<-grep("SUSSEX COUNTY",DE_2018_VoterRegMessy)
-statewide.start<-grep("STATEWIDE",DE_2018_VoterRegMessy)
-
-#now subset master list
-Kent<-DE_2018_VoterRegMessy[(kent.start+1):(newcastle.start-1)]
-NewCastle<-DE_2018_VoterRegMessy[(newcastle.start+1):(sussex.start-1)]
-Sussex<-DE_2018_VoterRegMessy[(sussex.start+1):(statewide.start-1)]
-Statewide<-DE_2018_VoterRegMessy[(statewide.start+1):length(DE_2018_VoterRegMessy)]
-
-#format and save Kent County
-Kent.County<-matrix(unlist(strsplit(Kent, "\\s+")),ncol=5,byrow=TRUE)
-Kent.County<-gsub("-OF-"," OF ",Kent.County)
-Kent.County<-gsub("County-Total", "County Total",Kent.County)
-Kent.County<-gsub(",", "",Kent.County) #Not Necessary
-Kent.County<-as.data.frame(Kent.County)
-Kent.County<-subset(Kent.County,!grepl("Total",Kent.County[,1]))
-Kent.County$V6<-substr(as.character(Kent.County[1:nrow(Kent.County),1]),1,2)
-Kent.County$V7<-substr(as.character(Kent.County[1:nrow(Kent.County),1]),7,8)
-Kent.County$V6[1]<-"ED"
-Kent.County$V7[1]<-"RD"
-Kent.County<-Kent.County[,2:7]
-write.table(Kent.County,paste("Kent.County.",i,".2018.csv",sep=""),sep=",",row.names=FALSE,col.names=FALSE)
-
-#format and save New Castle County
-NewCastle.County<-matrix(unlist(strsplit(NewCastle, "\\s+")),ncol=5,byrow=TRUE)
-NewCastle.County<-gsub("-OF-"," OF ",NewCastle.County)
-NewCastle.County<-gsub("County-Total", "County Total",NewCastle.County)
-NewCastle.County<-gsub(",", "",NewCastle.County) #Not Necessary
-NewCastle.County<-as.data.frame(NewCastle.County)
-NewCastle.County<-subset(NewCastle.County,!grepl("Total",NewCastle.County[,1]))
-NewCastle.County$V6<-substr(as.character(NewCastle.County[1:nrow(NewCastle.County),1]),1,2)
-NewCastle.County$V7<-substr(as.character(NewCastle.County[1:nrow(NewCastle.County),1]),7,8)
-NewCastle.County$V6[1]<-"ED"
-NewCastle.County$V7[1]<-"RD"
-NewCastle.County<-NewCastle.County[,2:7]
-write.table(NewCastle.County,paste("NewCastle.",i,".2018.csv",sep=""),sep=",",row.names=FALSE,col.names=FALSE)
-
-#format and save Sussex County
-Sussex.County<-matrix(unlist(strsplit(Sussex, "\\s+")),ncol=5,byrow=TRUE)
-Sussex.County<-gsub("-OF-"," OF ",Sussex.County)
-Sussex.County<-gsub("County-Total", "County Total",Sussex.County)
-Sussex.County<-gsub(",", "",Sussex.County) #Not Necessary
-Sussex.County<-as.data.frame(Sussex.County)
-Sussex.County<-subset(Sussex.County,!grepl("Total",Sussex.County[,1]))
-Sussex.County$V6<-substr(as.character(Sussex.County[1:nrow(Sussex.County),1]),1,2)
-Sussex.County$V7<-substr(as.character(Sussex.County[1:nrow(Sussex.County),1]),7,8)
-Sussex.County$V6[1]<-"ED"
-Sussex.County$V7[1]<-"RD"
-Sussex.County<-Sussex.County[,2:7]
-write.table(Sussex.County,paste("Sussex.",i,".2018.csv",sep=""),sep=",",row.names=FALSE,col.names=FALSE)
-
-#format and save statewide
-Statewide<-gsub("New Castle","New-Castle",Statewide)
-Statewide<-matrix(unlist(strsplit(Statewide, "\\s+")),ncol=5,byrow=TRUE)
-Statewide<-gsub("-OF-"," OF ",Statewide)
-Statewide<-gsub("County-Total", "County Total",Statewide)
-Statewide<-gsub("New-Castle", "New Castle",Statewide)
-Statewide<-gsub(",", "",Statewide) #Not Necessary
-Statewide<-as.data.frame(Statewide)
-write.table(Statewide,paste("Statewide.",i,".2018.csv",sep=""),sep=",",row.names=FALSE,col.names=FALSE)
-
+for (i in 1:11) {
+  #define target uRL
+  urlname <-
+    paste(
+      "https://elections.delaware.gov/reports/e70r2601_2017",
+      loop.list[i],
+      "01.shtml",
+      sep = ""
+    )
+  
+  #read-in table
+  DE_2018_VoterRegMessy <- read_html(urlname) %>%
+    html_nodes(xpath = '/html/body/center[2]/pre') %>% #html_nodes acts as a selector
+    html_text() %>%
+    strsplit(split = "\n") %>%
+    unlist() %>%
+    .[. != ""]
+  
+  #fist do some hacky substitutions that will be needed later
+  DE_2018_VoterRegMessy <- gsub(" OF  ", "-OF-", DE_2018_VoterRegMessy)
+  DE_2018_VoterRegMessy <-
+    gsub("County Total", "County-Total", DE_2018_VoterRegMessy)
+  
+  #split up by county, first getting list numbers for each county
+  kent.start <- grep("KENT COUNTY", DE_2018_VoterRegMessy)
+  newcastle.start <- grep("NEW CASTLE COUNTY", DE_2018_VoterRegMessy)
+  sussex.start <- grep("SUSSEX COUNTY", DE_2018_VoterRegMessy)
+  statewide.start <- grep("STATEWIDE", DE_2018_VoterRegMessy)
+  
+  #now subset master list
+  Kent <- DE_2018_VoterRegMessy[(kent.start + 1):(newcastle.start - 1)]
+  NewCastle <-
+    DE_2018_VoterRegMessy[(newcastle.start + 1):(sussex.start - 1)]
+  Sussex <- DE_2018_VoterRegMessy[(sussex.start + 1):(statewide.start - 1)]
+  Statewide <-
+    DE_2018_VoterRegMessy[(statewide.start + 1):length(DE_2018_VoterRegMessy)]
+  
+  #format and save Kent County
+  Kent.County <-
+    matrix(unlist(strsplit(Kent, "\\s+")), ncol = 5, byrow = TRUE)
+  Kent.County <- gsub("-OF-", " OF ", Kent.County)
+  Kent.County <- gsub("County-Total", "County Total", Kent.County)
+  Kent.County <- gsub(",", "", Kent.County) #Not Necessary
+  Kent.County <- as.data.frame(Kent.County)
+  Kent.County <- subset(Kent.County, !grepl("Total", Kent.County[, 1]))
+  Kent.County$V6 <-
+    substr(as.character(Kent.County[1:nrow(Kent.County), 1]), 1, 2)
+  Kent.County$V7 <-
+    substr(as.character(Kent.County[1:nrow(Kent.County), 1]), 7, 8)
+  Kent.County$V6[1] <- "ED"
+  Kent.County$V7[1] <- "RD"
+  Kent.County <- Kent.County[, 2:7]
+  write.table(
+    Kent.County,
+    paste("Kent.County.", i, ".2018.csv", sep = ""),
+    sep = ",",
+    row.names = FALSE,
+    col.names = FALSE
+  )
+  
+  #format and save New Castle County
+  NewCastle.County <-
+    matrix(unlist(strsplit(NewCastle, "\\s+")), ncol = 5, byrow = TRUE)
+  NewCastle.County <- gsub("-OF-", " OF ", NewCastle.County)
+  NewCastle.County <-
+    gsub("County-Total", "County Total", NewCastle.County)
+  NewCastle.County <- gsub(",", "", NewCastle.County) #Not Necessary
+  NewCastle.County <- as.data.frame(NewCastle.County)
+  NewCastle.County <-
+    subset(NewCastle.County, !grepl("Total", NewCastle.County[, 1]))
+  NewCastle.County$V6 <-
+    substr(as.character(NewCastle.County[1:nrow(NewCastle.County), 1]), 1, 2)
+  NewCastle.County$V7 <-
+    substr(as.character(NewCastle.County[1:nrow(NewCastle.County), 1]), 7, 8)
+  NewCastle.County$V6[1] <- "ED"
+  NewCastle.County$V7[1] <- "RD"
+  NewCastle.County <- NewCastle.County[, 2:7]
+  write.table(
+    NewCastle.County,
+    paste("NewCastle.", i, ".2018.csv", sep = ""),
+    sep = ",",
+    row.names = FALSE,
+    col.names = FALSE
+  )
+  
+  #format and save Sussex County
+  Sussex.County <-
+    matrix(unlist(strsplit(Sussex, "\\s+")), ncol = 5, byrow = TRUE)
+  Sussex.County <- gsub("-OF-", " OF ", Sussex.County)
+  Sussex.County <- gsub("County-Total", "County Total", Sussex.County)
+  Sussex.County <- gsub(",", "", Sussex.County) #Not Necessary
+  Sussex.County <- as.data.frame(Sussex.County)
+  Sussex.County <-
+    subset(Sussex.County, !grepl("Total", Sussex.County[, 1]))
+  Sussex.County$V6 <-
+    substr(as.character(Sussex.County[1:nrow(Sussex.County), 1]), 1, 2)
+  Sussex.County$V7 <-
+    substr(as.character(Sussex.County[1:nrow(Sussex.County), 1]), 7, 8)
+  Sussex.County$V6[1] <- "ED"
+  Sussex.County$V7[1] <- "RD"
+  Sussex.County <- Sussex.County[, 2:7]
+  write.table(
+    Sussex.County,
+    paste("Sussex.", i, ".2018.csv", sep = ""),
+    sep = ",",
+    row.names = FALSE,
+    col.names = FALSE
+  )
+  
+  #format and save statewide
+  Statewide <- gsub("New Castle", "New-Castle", Statewide)
+  Statewide <-
+    matrix(unlist(strsplit(Statewide, "\\s+")), ncol = 5, byrow = TRUE)
+  Statewide <- gsub("-OF-", " OF ", Statewide)
+  Statewide <- gsub("County-Total", "County Total", Statewide)
+  Statewide <- gsub("New-Castle", "New Castle", Statewide)
+  Statewide <- gsub(",", "", Statewide) #Not Necessary
+  Statewide <- as.data.frame(Statewide)
+  write.table(
+    Statewide,
+    paste("Statewide.", i, ".2018.csv", sep = ""),
+    sep = ",",
+    row.names = FALSE,
+    col.names = FALSE
+  )
+  
 }
-
-#The end
