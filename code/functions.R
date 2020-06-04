@@ -29,8 +29,8 @@ create_date_range <-
   function(start_date, 
            end_date) {
     
-    seq.Date(from = as.Date("2017-01-01"),
-             to = as.Date("2017-12-01"),
+    seq.Date(from = as.Date(start_date),
+             to = as.Date(end_date),
              by = "months")
     
   }
