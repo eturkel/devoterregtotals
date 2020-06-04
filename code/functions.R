@@ -4,6 +4,10 @@
 
 # All functions for the script
 
+### TODO:
+# Add error handling for missing dates when scraping (read_table)
+# Create function to write dataframes to .csv
+
 
 ################################################################################
 # LIBRARIES                                                                    #
