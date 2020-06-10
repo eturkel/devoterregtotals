@@ -120,7 +120,7 @@ full_data <- full_DE %>%
   left_join(metadata[,-1], by = c("Url" = "urlname"))
 
 # write final data file
-write_csv(full_data, file.path("data", "DE_2010_2019.csv"))
+write_csv(full_data, file.path("..", "data", "DE_2010_2019.csv"))
 
 # Verify scrape:
 # check if I can derive Statewide total for any year/month
