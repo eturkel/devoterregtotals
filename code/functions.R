@@ -147,19 +147,19 @@ get_voter_registration <-
       read_table(date)
     
     Kent <- 
-      counties_2017$Kent %>% 
+      extract_counties(voter_registration_raw)$Kent %>% 
       county_to_df()
     
     NewCastle <- 
-      counties_2017$NewCastle %>% 
+      extract_counties(voter_registration_raw)$NewCastle %>% 
       county_to_df()
     
     Sussex <- 
-      counties_2017$Sussex %>% 
+      extract_counties(voter_registration_raw)$Sussex %>% 
       county_to_df()
     
     Statewide <- 
-      counties_2017$Statewide %>% 
+      extract_counties(voter_registration_raw)$Statewide %>% 
       county_to_df() %>% 
       mutate(Date = as.Date(date))
     
