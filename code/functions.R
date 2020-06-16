@@ -20,7 +20,8 @@ pacman::p_load(
   tidyverse
   ,rvest
   ,here
-  ,glue)
+  ,glue
+  ,httr)
 
 
 ################################################################################
@@ -48,15 +49,22 @@ read_table <-
     clean_date <- 
       str_remove_all(date, "-")
     
-    url <- 
+    urlname <- 
       glue::glue("https://elections.delaware.gov/reports/e70r2601_{clean_date}.shtml")
     
-    read_html(url) %>%
-      html_nodes(xpath = '/html/body/center[2]/pre') %>% #html_nodes acts as a selector
-      html_text() %>%
-      strsplit(split = "\n") %>%
-      unlist() %>%
-      .[. != ""]
+    if(!http_error(urlname)) {
+      #read-in table
+      voter_messy <- read_html(urlname) %>% 
+        html_nodes(css = "pre") %>%
+        html_text() %>%
+        strsplit(split = "\n") %>%
+        unlist() %>%
+        .[. != ""]
+      return(voter_messy)
+    } else {
+      message("could not find url")
+      return(NA)
+    }
     
   }
 
@@ -146,20 +154,22 @@ get_voter_registration <-
     voter_registration_raw <-
       read_table(date)
     
+    counties_extract <- extract_counties(voter_registration_raw)
+    
     Kent <- 
-      extract_counties(voter_registration_raw)$Kent %>% 
+      counties_extract$Kent %>% 
       county_to_df()
     
     NewCastle <- 
-      extract_counties(voter_registration_raw)$NewCastle %>% 
+      counties_extract$NewCastle %>% 
       county_to_df()
     
     Sussex <- 
-      extract_counties(voter_registration_raw)$Sussex %>% 
+      counties_extract$Sussex %>% 
       county_to_df()
     
     Statewide <- 
-      extract_counties(voter_registration_raw)$Statewide %>% 
+      counties_extract$Statewide %>% 
       county_to_df() %>% 
       mutate(Date = as.Date(date))
     
