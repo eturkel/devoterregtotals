@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <title>EGIS_OWNER.LegDistrictRepresent</title>
+                <geoform>vector digital data</geoform>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>The Delaware General Assembly House of Representatives Districts of which there are 41. The districts were created after the 2010 decennial census and will be updated again after the 2020 decennial census if necessary. Districts are created based on information from the decennial census.</abstract>
+            <purpose>The Delaware General Assembly House of Representatives Districts of which there are 41.</purpose>
+        </descript>
+        <status>
+            <update>As needed</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-75.789985</westbc>
+                <eastbc>-75.041483</eastbc>
+                <northbc>39.839603</northbc>
+                <southbc>38.450791</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>Delaware</themekey>
+                <themekey>Legislature</themekey>
+            </theme>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>The State of Delaware makes no warranty or representation, expressed or implied, with respect to the quality, content, accuracy, completeness, currency, or non-infringement of proprietary rights, of any of the GIS or other data or information, or any other materials and items, that are displayed or made available for download from this site. All such data, information, items and materials (collectively, the “FirstMap Data”) are provided "as is" and users are fully and solely responsible for any consequences of use. FirstMap Data may have been created from a variety of sources, including sources beyond the control of the State of Delaware, and are subject to change without notice. To the extent you use, apply, add to, modify or implement this information in your own information system or other setting, or otherwise for your own purposes, you do so at your own risk. In no event shall the State of Delaware or its agencies, officers, employees, agents, or representatives be liable for any damages of any kind or nature whatsoever including, but not limited to, direct, indirect, special, punitive, incidental, exemplary or consequential damages arising from your downloading, modifying, sharing, distributing, or using of FirstMap Data even if notified of the possibility of such damages. Further, the State of Delaware does not accept liability for any damages or misrepresentation caused by inaccuracies in the FirstMap Data or as a result of changes to the FirstMap Data, nor is there responsibility assumed to maintain the FirstMap Data in any manner or form.</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Delaware Division of Technology and Information - FirstMap</cntorg>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>801 Silver Lake Blvd</address>
+                    <city>Dover</city>
+                    <state>DE</state>
+                    <postal>19904</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>302-739-9560</cntvoice>
+                <cntemail>FirstMap@state.de.us</cntemail>
+            </cntinfo>
+        </ptcontac>
+        <native>Version 6.2 (Build 9200) ; Esri ArcGIS 10.5.1.7333</native>
+    </idinfo>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>GT-polygon composed of chains</sdtstype>
+                <ptvctcnt>41</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>EGIS_OWNER.LegDistrictRepresent</enttypl>
+            </enttyp>
+            <attr>
+                <attrlabl>SHAPE_LEN_1</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>REPUBLICAN</attrlabl>
+                <attrdef>Total population of persons who identify as "Republican" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_OTHER_PA</attrlabl>
+                <attrdef>Percentage of population, who are voting age, that identify as "Other Party" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>DEVIATION</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>F_H18_POP</attrlabl>
+                <attrdef>Percentage of population, who are voting age, that identify as a "Hispanic" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>NAME</attrlabl>
+                <attrdef>The name of the representative that currently represents the selected district.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F18_POP</attrlabl>
+                <attrdef>Total population of persons, who are voting age, by race, for the selected House of Representative based on the decennial census</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>WHITE</attrlabl>
+                <attrdef>Total population of persons who identify as "White" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE_AREA_1</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>POPULATION</attrlabl>
+                <attrdef>Total population, by race, for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>URL</attrlabl>
+                <attrdef>The URL location for the house district representative. The URL points back to the State of Delaware, Legislative Hall website.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_18_BLK</attrlabl>
+                <attrdef>Percentage of population, who are voting age, by race, that identify as a "Black" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_ASIAN</attrlabl>
+                <attrdef>Percentage of population, by race, that identify as a "Asian" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>DISTRICT</attrlabl>
+                <attrdef>The district number of the House of Representative.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>H18_POP</attrlabl>
+                <attrdef>Total population of persons, who are voting age, who categorize themselves as "Hispanic or Other" for the selected House of Representative based on the decennial census</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>DISTRICT_1</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>BLACK</attrlabl>
+                <attrdef>Total population of persons who identify as "Black" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_TOTAL__V</attrlabl>
+                <attrdef>Percentage of population, who are voting age, who identify with a political party, for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>OBJECTID_1</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>F_REPUBLIC</attrlabl>
+                <attrdef>Percentage of population, who are voting age, that identify as a "Repbuplican" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_HISPANIC</attrlabl>
+                <attrdef>Percentage of population, that identify as a "Hispanic" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>PARTY</attrlabl>
+                <attrdef>The party affiliation of the current House Representative. D = Democrat R = Repbuplican</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_BLACK</attrlabl>
+                <attrdef>Percentage of population, that identify as a "Black" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_DEVIATIO</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>LEGSESSION</attrlabl>
+                <attrdef>The current legislataive session.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_18_POP</attrlabl>
+                <attrdef>Percentage of population, who are voting age, by race, for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.LEN</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>OTHER_PART</attrlabl>
+                <attrdef>Total population of persons who identify as "Other Party" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>HISPANIC_O</attrlabl>
+                <attrdef>Total population of persons who identify as "Hispanic or Other" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F18_BLK</attrlabl>
+                <attrdef>Total population of persons, who are voting age, who categorize themselves as "Black" for the selected House of Representative based on the decennial census</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_DEMOCRAT</attrlabl>
+                <attrdef>Percentage of population, who are voting age, that identify as a "Democrat" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>DEMOCRATIC</attrlabl>
+                <attrdef>Total population of persons who identify as "Democrats" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Coordinates defining the features.</udom>
+                    				
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.AREA</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>ASIAN</attrlabl>
+                <attrdef>Total population of persons who identify as "Asian" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>IDEAL_VALU</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>TOTAL__VOT</attrlabl>
+                <attrdef>Total voter population, who identify with a political party, for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>OBJECTID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                    				
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>F_WHITE</attrlabl>
+                <attrdef>Percentage of population, that identify as a "White" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F_18_WHT</attrlabl>
+                <attrdef>Percentage of population, who are voting age, by race, that identify as a "White" for the selected House of Representative based on the decennial census.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>F18_WHT</attrlabl>
+                <attrdef>Total population of persons, who are voting age, who categorize themselves as "White", for the selected House of Representative based on the decennial census</attrdef>
+            </attr>
+        </detailed>
+    </eainfo>
+    <metainfo>
+        <metd>20180723</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Delaware Division of Technology and Information - FirstMap</cntorg>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>801 Silver Lake Blvd</address>
+                    <city>Dover</city>
+                    <state>DE</state>
+                    <postal>19904</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>302-739-9560</cntvoice>
+                <cntemail>FirstMap@state.de.us</cntemail>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+        <metuc>The State of Delaware makes no warranty or representation, expressed or implied, with respect to the quality, content, accuracy, completeness, currency, or non-infringement of proprietary rights, of any of the GIS or other data or information, or any other materials and items, that are displayed or made available for download from this site. All such data, information, items and materials (collectively, the “FirstMap Data”) are provided "as is" and users are fully and solely responsible for any consequences of use. FirstMap Data may have been created from a variety of sources, including sources beyond the control of the State of Delaware, and are subject to change without notice. To the extent you use, apply, add to, modify or implement this information in your own information system or other setting, or otherwise for your own purposes, you do so at your own risk. In no event shall the State of Delaware or its agencies, officers, employees, agents, or representatives be liable for any damages of any kind or nature whatsoever including, but not limited to, direct, indirect, special, punitive, incidental, exemplary or consequential damages arising from your downloading, modifying, sharing, distributing, or using of FirstMap Data even if notified of the possibility of such damages. Further, the State of Delaware does not accept liability for any damages or misrepresentation caused by inaccuracies in the FirstMap Data or as a result of changes to the FirstMap Data, nor is there responsibility assumed to maintain the FirstMap Data in any manner or form.</metuc>
+    </metainfo>
+</metadata>
